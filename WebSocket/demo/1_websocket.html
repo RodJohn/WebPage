@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>index</title>
+
+</head>
+<noscript><h2 style="color: #ff0000">貌似你的浏览器不支持websocket</h2></noscript>
+
+<script type="text/javascript">
+
+    var webSocket = new WebSocket('ws://localhost:9000/origin');
+
+
+    webSocket.onmessage = function(event) {
+        console.log("接收到消息");
+        var data = event.data;
+        console.log(data);
+    };
+
+    webSocket.addEventListener("open", function(event) {
+        console.log("  连接已经建立 ");
+        webSocket.send("hhahah");
+    });
+
+
+</script>
+</body>
+</html>
