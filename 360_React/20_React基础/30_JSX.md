@@ -78,7 +78,9 @@ JSX 允许直接在模板插入 JavaScript 变量。
     
 # 样式
 
-React 推荐使用内联样式。我们可以使用 camelCase 语法来设置内联样式. React 会在指定元素数字后自动添加 px 。以下实例演示了为 h1 元素添加 myStyle 内联样式：
+React 推荐使用内联样式。
+我们可以使用 camelCase 语法来设置内联样式. React 会在指定元素数字后自动添加 px 。
+以下实例演示了为 h1 元素添加 myStyle 内联样式：
 
      var myStyle = {
          fontSize: 100,

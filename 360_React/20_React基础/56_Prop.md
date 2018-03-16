@@ -1,5 +1,10 @@
 
 
+组件的用法与原生的 HTML 标签完全一致，可以任意加入属性，
+比如 <HelloMessage name="John"> ，就是 HelloMessage 组件加入一个 name 属性，值为 John。
+组件的属性可以在组件类的 this.props 对象上获取，
+比如 name 属性就可以通过 this.props.name 读取
+
 
 # 使用 Props
 
