@@ -3,6 +3,7 @@
 
     CORS（Cross-Origin Resource Sharing）
     跨域资源共享
+    它是W3C标准，大部分浏览器都支持
     它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。
 
 
@@ -43,7 +44,7 @@
 响应头分析
 
     Access-Control-Allow-Origin
-        必选  
+        必选 * 
         表示允许的Origin字段的值
     Access-Control-Allow-Credentials
         可选  
@@ -161,7 +162,7 @@
 
 分析
 
-    Access-Control-Allow-Origin   表示服务器支持的所有源
+    Access-Control-Allow-Origin   表示服务器支持的所有源*
     Access-Control-Allow-Methods  表明服务器支持的所有跨域请求的方法
     Access-Control-Allow-Headers  表明服务器支持的所有头信息字段
     Access-Control-Allow-Credentials
