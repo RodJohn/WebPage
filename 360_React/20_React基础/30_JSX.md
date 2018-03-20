@@ -9,13 +9,16 @@
     使用 JSX 编写模板更加简单快速。
     
 
-# HTML 与 JavaScript 的混写
+# 3 HTML 与 JavaScript 的混写
+
+
+概述
     
- JSX 的语法，允许 HTML 与 JavaScript 的混写
- 
- JSX 的基本语法规则：
- 遇到 HTML 标签（以 < 开头），就用 HTML 规则解析；
- 遇到代码块（以 { 开头），就用 JavaScript 规则解析
+    JSX 的语法，允许 HTML 与 JavaScript 的混写
+    遇到 HTML 标签（以 < 开头），就用 HTML 规则解析；
+    遇到代码块（以 { 开头），就用 JavaScript 规则解析
+
+示例
  
 ```
 <!DOCTYPE html>
@@ -45,8 +48,22 @@
 
 ``` 
 
+# 6 变量
 
-# 数组
+概述
+
+    JSX 允许直接在模板插入 JavaScript 变量。
+    变量的作用域
+
+
+## 6.1 数组
+
+概述
+
+    JSX 允许直接在模板插入 JavaScript 变量。
+    如果这个变量是一个数组，则会展开这个数组的所有成员
+
+示例
 
 ```
 <!DOCTYPE html>
@@ -72,8 +89,6 @@
 </html>
 ```
 
-JSX 允许直接在模板插入 JavaScript 变量。
-如果这个变量是一个数组，则会展开这个数组的所有成员
 
     
 # 样式
