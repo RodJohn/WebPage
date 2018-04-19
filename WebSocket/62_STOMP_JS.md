@@ -12,6 +12,7 @@ var socket = new SockJS('/endpointWisely');
 var stompClient = Stomp.over(socket);
 stompClient.connect({}, function(frame) {}
 
+
 ```
 
 频道订阅
