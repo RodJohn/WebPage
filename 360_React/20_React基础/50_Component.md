@@ -2,7 +2,11 @@
 
 https://www.cnblogs.com/wonyun/p/5930333.html
 
+React推出后，出于不同的原因先后出现三种定义react组件的方式，殊途同归；具体的三种方式：
 
+函数式定义的无状态组件
+es5原生方式React.createClass定义的组件
+es6形式的extends React.Component定义的组件
 
 # 1 概述
 
@@ -189,7 +193,9 @@ style={{opacity: this.state.opacity}}
 
 
 
+# 参考
 
+https://www.cnblogs.com/wonyun/p/5930333.html
 
 
 
