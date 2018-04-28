@@ -71,7 +71,11 @@ es6形式的extends React.Component定义的组件
         initialValue: ''
     };
 
+### 问题
 
+    React.createClass会自绑定函数方法（不像React.Component只绑定需要关心的函数）导致不必要的性能开销，增加代码过时的可能性。
+    React.createClass的mixins不够自然、直观；React.Component形式非常适合高阶组件（Higher Order Components--HOC）,它以更直观的形式展示了比mixins更强大的功能，并且HOC是纯净的JavaScript，不用担心他们会被废弃。
+    HOC可以参考无状态组件(Stateless Component) 与高阶组件。
 
 
 ## 5.2 React.Component
@@ -119,6 +123,19 @@ es6形式的extends React.Component定义的组件
         initialValue: ''
     };
 
+
+# 5 引入
+
+可以像插入普通 HTML 标签一样，在网页中插入组件
+
+    变量 HelloMessage 就是一个组件类。
+    模板插入 <HelloMessage /> 时，会自动生成 HelloMessage 的一个实例。
+    
+    
+    
+
+
+
 ## 5.3 特点
 
 ### 有状态性
@@ -128,65 +145,53 @@ es6形式的extends React.Component定义的组件
 
 ### 函数this自绑定
 
-
-
-
-
-
-
-## 特点
-
-组件不会被实例化
-
-    整体渲染性能得到提升
-        因为组件被精简成一个render方法的函数来实现的，
-        由于是无状态组件，所以无状态组件就不会在有组件实例化的过程，
-        无实例化过程也就不需要分配多余的内存，从而性能得到一定的提升。
-    组件不能访问this对象
-        无状态组件由于没有实例化过程，所以无法访问组件this中的对象，
-        例如：this.ref、this.state等均不能访问。若想访问就不能使用这种形式来创建组件
-    组件无法访问生命周期的方法
-        因为无状态组件是不需要组件生命周期管理和状态管理，
-        所以底层实现这种形式的组件时是不会实现组件的生命周期方法。
-        所以无状态组件是不能参与组件的各个生命周期管理的。
-    无状态组件只能访问输入的props，
-        同样的props会得到同样的渲染结果，不会有副作用
+React.createClass
     
+    React.createClass创建的组件，
+    其每一个成员函数的this都有React自动绑定，
+    任何时候使用，直接使用this.method即可，函数中的this会被正确设置。
+    
+    const Contacts = React.createClass({  
+      handleClick() {
+        console.log(this); // React Component instance
+      },
+      render() {
+        return (
+          <div onClick={this.handleClick}></div>
+        );
+      }
+    });
 
 
-## 最佳实践
+React.Component
 
-    无状态组件被鼓励在大型项目中尽可能以简单的写法来分割原本庞大的组件，
-    未来React也会这种面向无状态组件在譬如无意义的检查和内存分配领域进行一系列优化，
-    所以只要有可能，尽量使用无状态组件。
-    在大部分React代码中，大多数组件被写成无状态的组件，通过简单组合可以构建成其他的组件等；
-    这种通过多个简单然后合并成一个大应用的设计模式被提倡。
-    无状态组件的创建形式使代码的可读性更好，并且减少了大量冗余的代码，精简至只有一个render方法，大大的增强了编写一个组件的便利，除此之外无状态组件还有以下几个显著的特点：
- 
-
-# 组件style
-
-组件的style属性的设置方式也值得注意，不能写成
-
-
-style="opacity:{this.state.opacity};"
-而要写成
-
-
-style={{opacity: this.state.opacity}}
-这是因为 React 组件样式是一个对象，所以第一重大括号表示这是 JavaScript 语法，第二重大括号表示样式对象
-
-
-
-
-# 5 引入
-
-可以像插入普通 HTML 标签一样，在网页中插入组件
-
-    变量 HelloMessage 就是一个组件类。
-    模板插入 <HelloMessage /> 时，会自动生成 HelloMessage 的一个实例。
-
-
+    React.Component创建的组件，其成员函数不会自动绑定this，
+    需要开发者手动绑定，否则this不能获取当前组件实例对象。
+    
+    class Contacts extends React.Component {  
+      constructor(props) {
+        super(props);
+      }
+      handleClick() {
+        console.log(this); // null
+      }
+      render() {
+        return (
+          <div onClick={this.handleClick}></div>
+        );
+      }
+      
+    当然，React.Component有三种手动绑定方法：
+    可以在构造函数中完成绑定，
+    也可以在调用时使用method.bind(this)来完成绑定，
+    还可以使用arrow function来绑定。
+    
+        constructor(props) {
+           super(props);
+           this.handleClick = this.handleClick.bind(this); //构造函数中绑定
+      }
+        <div onClick={this.handleClick.bind(this)}></div> //使用bind来绑定
+        <div onClick={()=>this.handleClick()}></div> //使用arrow function来绑定
 
 
 
