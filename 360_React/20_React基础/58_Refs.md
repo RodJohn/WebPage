@@ -53,3 +53,6 @@ ReactDOM.render(
 
 
 
+ref从一定程度上增加了组件之间的耦合性，导致难以分离，所以如果可以用props来处理的事情，尽量不要用ref来处理
+
+https://blog.csdn.net/qq_18661257/article/details/63683212
